@@ -1,0 +1,42 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+   
+
+    {% if app.session.flashbag.has('error') %}
+    <div class="alert alert-danger">
+        {% for message in app.session.flashbag.get('error') %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if p|length == 0 %}
+    <h1 style="text-align: center; color: gray; padding: 150px 0;">Aucun produit privé est disponible pour le changement</h1>
+
+{% else %}
+<div class="container-fluid pt-5 pb-3">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Produit Priver</span></h2>
+        <div class="row px-xl-5">
+{% for produit in p %}
+  <div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="product-item bg-light mb-4">
+      <div class="product-img position-relative overflow-hidden">
+        <img class="img-fluid w-100" src="{{ asset('uploadsProdPriver/' ~ produit.image) }}">
+        
+      </div>
+      <div class="text-center py-4">
+        <a class="h6 text-decoration-none text-truncate" href="">{{ produit.nom }}</a>
+        
+	<form  action="{{ path('echange_update', {'id': id, 'id_PP': produit.id}) }}">
+
+                            
+                            <button type="submit" class="btn btn-primary">changer</button>
+                 </form>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+ </div>
+  </div>
+     {% endif %}
+{% endblock %}

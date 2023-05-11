@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+<main id="main" class="main">
+<div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Table Produit</h5>
+
+              <!-- Table with hoverable rows -->
+              <table class="table table-hover">
+               <thead>
+				<tr>
+					<th scope="col">id</th>
+					<th scope="col">nom</th>
+					<th scope="col">description</th>
+					<th scope="col">prix</th>
+                	<th scope="col">image</th>
+					<th scope="col">categorie</th>
+					<th scope="col">Actions</th>
+
+
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr>
+					{% for i in produits %}
+						<td>{{i.idproduit}}</td>
+                        <td>{{i.nomproduit}}</td>
+						<td>{{i.descriptionproduit}}</td>
+						<td>
+							{{i.prixproduit}}
+						
+
+
+						<td><img src="{{ asset ('uploads/produit/') ~i.imageproduit }}" alt="" width="50" height="50">
+						</td>
+						<td>{{i.idCategorie}}</td>
+
+						<td>
+                                <a <a class="btn btn-primary rounded-pill" href="{{ path('app_produit_edit', {'id_produit': i.idproduit}) }}">edit</a>    
+						</td>
+					</tr>
+				{% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with hoverable rows -->
+
+            </div>
+          </div>
+</table>
+</main>
+{% endblock %}

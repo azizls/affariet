@@ -1,0 +1,49 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Favoris by User and Produit{% endblock %}
+
+{% block body %}
+    <h1>Favoris by User and Produit</h1>
+    <canvas id="favoris-chart"></canvas>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById('favoris-chart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    {% for item in data %}
+                        '{{ item.label }}',
+                    {% endfor %}
+                ],
+                datasets: [
+                    {% for user in app.userRepository.findAll() %}
+                        {
+                            label: '{{ user.username }}',
+                            data: [
+                                {% for item in data %}
+                                    {{ item.data[loop.index0][user.id] ?? 0 }},
+                                {% endfor %}
+                            ],
+                            backgroundColor: '#1f78b4',
+                            borderColor: 'rgba({{ randomColor() }}, 1)',
+                            borderWidth: 1
+                        },
+                    {% endfor %}
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        precision: 0
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}

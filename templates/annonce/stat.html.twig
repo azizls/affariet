@@ -1,0 +1,22 @@
+
+{% block content %}
+    <h1>Statistiques des annonces</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Nombre d'annonces</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in stats %}
+                <tr>
+                    <td>{{ stat.type }}</td>
+                    <td>{{ stat.count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_annonce_index') }}">back to list</a>
+{% endblock %}

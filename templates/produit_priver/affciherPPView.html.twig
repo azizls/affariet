@@ -1,0 +1,32 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+<div class="container-fluid pb-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-5 mb-30">
+            <div id="product-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner bg-light">
+                    <div class="carousel-item active">
+                        <img class="w-100" src="{{ asset('uploadsProdPriver/' ~ produit.image) }}" alt="Image" style="max-height: 400px; object-fit: contain;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7 h-auto mb-30">
+            <div class="h-100 bg-light p-30">
+                <h3>{{ produit.nom }}</h3>
+                
+                <strong class="text-dark mr-3">Description:</strong>
+                <p class="mb-4">{{ produit.description }}</p>
+                
+                    <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>{{ produit.getIdUser().Email }}</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt text-primary mr-3"></i>+214{{ produit.getIdUser().numero}}</p>
+                    <div class="message-icon">
+ 
+                    
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

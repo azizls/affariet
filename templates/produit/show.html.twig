@@ -1,0 +1,36 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    <h1>Produit</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id_produit</th>
+                <td>{{ produit.idProduit }}</td>
+            </tr>
+            <tr>
+                <th>Nom_produit</th>
+                <td>{{ produit.nomProduit }}</td>
+            </tr>
+            <tr>
+                <th>Description_produit</th>
+                <td>{{ produit.descriptionProduit }}</td>
+            </tr>
+            <tr>
+                <th>Prix_produit</th>
+                <td>{{ produit.prixProduit }}</td>
+            </tr>
+            <tr>
+                <th>Image_produit</th>
+                <td><img src="{{ asset ('uploads/produit/' ~produit.imageproduit) }}" alt="" width="50" height="50">
+	        </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_produit_index') }}">back to list</a>
+
+{% endblock %}

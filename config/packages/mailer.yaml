@@ -1,0 +1,9 @@
+framework:
+    mailer:
+        dsn: '%env(MAILER_DSN)%'
+        # Uncomment the following line if you need to use a non-default mailer
+        # default_mailer: custom_mailer
+        # Uncomment the following line if you need to define custom mailers
+        # mailers:
+        #     custom_mailer:
+        #         dsn: '...'

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réservations{% endblock %}
+{% block body %}
+<main id="main" class="main">
+    <h1>Réservations</h1>
+
+    <div class="table-container">
+    <table class="my-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Événement</th>
+                <th>Image</th>
+                <th>Date de réservation</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.idRes }}</td>
+                    <td>{{ reservation.idEvent.nomEvent }}</td>
+                    <td><img src="{{ asset('uploads/event_images/' ~ reservation.idEvent.affiche) }}" alt="{{ reservation.idEvent.nomEvent }}" style="max-width: 100px;"></td>
+                    <td>{{ reservation.dateRes ? reservation.dateRes|date('Y-m-d') : '' }}</td>
+                    <td>{{ reservation.idEvent.prix }}</td>
+                    <td>
+                        <a href="{{ path('app_reservation_show', {'idRes': reservation.idRes}) }}">Voir</a>
+                        <a href="{{ path('app_reservation_edit', {'idRes': reservation.idRes}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Aucune réservation trouvée.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    <a href="{{ path('app_reservation_new') }}">Créer une nouvelle réservation</a>
+    </main>
+{% endblock %}

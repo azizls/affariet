@@ -1,0 +1,137 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+
+<form action="{{ path('annonces_recherche') }}" method="get">
+    <div class="form-group">
+        <label for="search">Recherche :</label>
+        <input type="text" name="search" id="search" class="form-control" placeholder="Mot clé">
+    </div>
+    <div class="form-group">
+        <label for="type">Type :</label>
+        <select name="type" id="type" class="form-control">
+            <option value="">-- Tous les types --</option>
+            <option value="publicité">Publicité</option>
+            <option value="annonce commerciale">Annonce commerciale</option>
+                        <option value="avis">avis</option>
+
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+
+  <div class="container-fluid">
+        <div class="text-right">
+            <a href="{{ path('app_annonce_post') }}" class="btn btn-primary mb-3">Ajouter une annonce</a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="text-right">
+            <a href="{{ path('app_annonce_indexfront') }}" class="btn btn-primary mb-3">retour à la liste des annonces </a>
+        </div>
+    </div>
+
+   <div class="row justify-content-center">
+        <div class="col-md-8">
+        
+            {% for annonce in annonce %}
+                <div class="card mb-3">
+                    <div class="card-header">
+                  <a href="{{ path('app_annonce_deletefront', {'idAnnonce': annonce.idAnnonce}) }}" class="btn btn-sm btn-danger float-right">supprimer</a>
+
+
+                        <div class="d-flex align-items-center">
+                            <img src="{{ asset('uploads/images/' ~ annonce.image) }}" alt="{{ annonce.type }}" width="50" height="50" class="mr-2 rounded-circle">
+                            <div>
+                                <h5 class="mb-0">{{ annonce.type }}</h5>
+                                <small>Publié le {{ annonce.dateAnnonce|date('d/m/Y') }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {{ annonce.description }}
+                    </div>
+                    {% if annonce.image %}
+                        <div class="card-body">
+                            <img src="{{ asset('uploads/images/' ~ annonce.image) }}" alt="{{ annonce.type }}" width="100%">
+                        </div>
+                    {% endif %}
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary react-button" data-react-type="like" data-react-id="{{ annonce.idAnnonce }}">J'aime</button>
+                        <button class="btn btn-sm btn-secondary react-button" data-react-type="dislike" data-react-id="{{ annonce.idAnnonce }}">Je n'aime pas</button>
+                        <small class="ml-3">{{ annonce.nblikes }} j'aime - {{ annonce.nbdislikes }} je n'aime pas</small>
+                    </div>
+                    <div class="card-footer">
+                        <form method="post" action="{{ path('app_commentaire_commenter_ajax', {'idAnnonce': annonce.idAnnonce}) }}" id="ajax-form-{{ annonce.idAnnonce }}" class="ajax-form" data-idannonce="{{ annonce.idAnnonce }}">
+                            <div class="form-group mt-3">
+                                <label for="commentaire">Nouveau commentaire :</label>
+                                <textarea class="form-control" id="commentaire" name="commentaire"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Poster</button>
+                        </form>
+                    </div>
+                 {% if annonce.commentaire|length > 0 %}
+    <div class="card-footer">
+        <button class="btn btn-sm btn-link" type="button" data-toggle="collapse" data-target="#collapse-{{ annonce.idAnnonce }}" aria-expanded="false" aria-controls="collapse-{{ annonce.idAnnonce }}">Afficher les commentaires</button>
+    </div>
+    <div class="collapse" id="collapse-{{ annonce.idAnnonce }}">
+        {% for commentaire in annonce.commentaire|slice(0, 3) %}
+            <div class="card mb-2">
+                <div class="card-body">
+                    {{ commentaire.comment }}
+                </div>
+            </div>
+        {% endfor %}
+        {% if annonce.commentaire|length > 2 %}
+            {% for commentaire in annonce.commentaire|slice(3) %}
+                <div class="card mb-2 d-none">
+                    <div class="card-body">
+                        {{ commentaire.comment }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="card-footer">
+                <a href="{{ path('app_annonce_commentairesfront', {'idAnnonce': annonce.idAnnonce}) }}" class="btn btn-sm btn-link">Voir plus</a>
+
+            </div>
+        {% endif %}
+    </div>
+{% endif %}
+
+                </div>
+            {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('.react-button').on('click', function() {
+                var reactType = $(this).data('react-type');
+                var reactId = $(this).data('react-id');
+                var url = '{{ path('app_reactions_like', {'id': '000'}) }}';
+                url = url.replace('000', reactId);
+                $.ajax({
+                    url: url,
+                    method: 'POST',
+                    data: {type: reactType},
+                    success: function(data) {
+                        location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+               
+
+
+
+
+

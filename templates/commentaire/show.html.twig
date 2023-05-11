@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentaires de l'annonce n°{{ annonce.idAnnonce }}{% endblock %}
+
+{% block body %}
+<main id="main" class="main">
+    <h1>Commentaires de l'annonce n°{{ annonce.idAnnonce }}</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdCommentaire</th>
+                <th>Comment</th>
+                <th>User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commentaire in commentaires %}
+                <tr>
+                    <td>{{ commentaire.idCommentaire }}</td>
+                    <td>{{ commentaire.comment }}</td>
+                 
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Aucun commentaire trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_annonce_index') }}">Retour à la liste des annonces</a>
+    </main>
+{% endblock %}

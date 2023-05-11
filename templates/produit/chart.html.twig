@@ -1,0 +1,44 @@
+{% extends 'front.html.twig' %}
+
+{% block content %}
+    <h1>Produit Chart</h1>
+    <canvas id="chart"></canvas>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var data = {{ chartData|raw }};
+
+        var labels = [];
+        var prices = [];
+
+        data.forEach(function (item) {
+            labels.push(item.nom_produit);
+            prices.push(item.prix_produit);
+        });
+
+        var ctx = document.getElementById('chart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Prices',
+                    data: prices,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+{% endblock %}

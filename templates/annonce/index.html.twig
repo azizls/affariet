@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des annonces{% endblock %}
+
+{% block body %}
+<main id="main" class="main">
+<a href="{{ path('app_annonce_indexfront') }}" >consulter la page front</a>
+    <h1>Liste des annonces</h1>
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdAnnonce</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>DateAnnonce</th>
+                <th>Image</th>
+                <th>User</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for annonce in annonces %}
+            <tr>
+                <td>{{ annonce.idAnnonce }}</td>
+                <td>{{ annonce.type }}</td>
+                <td>{{ annonce.description }}</td>
+                <td>{{ annonce.dateAnnonce ? annonce.dateAnnonce|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ annonce.image }}</td>
+            <td>{{ annonce.idUser.email ?? 'N/A' }}</td>
+
+
+                
+                <td>
+                    <a href="{{ path('app_annonce_show', {'idAnnonce': annonce.idAnnonce}) }}">show</a>
+                    <a href="{{ path('app_annonce_delete', {'idAnnonce': annonce.idAnnonce}) }}">delete</a>
+                    <a href="{{ path('app_commentaire_new', {'idAnnonce': annonce.idAnnonce}) }}">commenter</a>
+                    <a href="{{ path('app_annonce_commentaires', {'idAnnonce': annonce.idAnnonce}) }}">voir Commentaires </a>
+                   
+                </td>
+            </tr>
+            
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ <a href="{{ path('app_annonce_new') }}" >Create new</a>
+<a href="{{ path('pdf_generator') }}">Generate PDF</a>
+<a href="{{ path('app_annonce_stat') }}">Generate statistique</a>
+   </main>
+{% endblock %}

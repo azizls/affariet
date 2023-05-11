@@ -1,0 +1,124 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+   <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Echange</a>
+                    <a class="breadcrumb-item text-dark" href="#">Produit Priver </a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+{% if app.session.flashbag.has('error') %}
+    <div class="alert alert-danger">
+        {% for message in app.session.flashbag.get('error') %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+    
+<a href="{{ path('app_produit_priver_add') }}" class="btn btn-primary">Ajouter un produit</a>
+{% if c|length == 0 %}
+    <h1 style="text-align: center; color: gray; padding: 150px 0;">Aucun produit privé n'a été créé</h1>
+
+{% else %}
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Add an input field for search -->
+<div class="col-lg-4 col-6 text-left">
+<div class="input-group">
+                        <input id="myInput" type="text" value="" name="Search" class="form-control" placeholder="Search" autofocus>
+                        <div class="input-group-append">
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                    </div>
+
+<script>
+  $(document).ready(function() {
+    // Get the input field and filter
+    var input = document.getElementById("myInput");
+    var filter = input.value.toUpperCase();
+
+    // Loop through the product items and hide those that don't match the search query
+    $(".product-item").each(function() {
+      var productName = $(this).find(".text-truncate").text().toUpperCase();
+      if (productName.indexOf(filter) > -1) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+
+    // Add event listener to input field to trigger search on keyup
+    input.addEventListener("keyup", function() {
+      filter = input.value.toUpperCase();
+      $(".product-item").each(function() {
+        var productName = $(this).find(".text-truncate").text().toUpperCase();
+        if (productName.indexOf(filter) > -1) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
+    
+  });
+</script>
+
+
+
+
+
+<div class="container-fluid pt-5 pb-3">
+  <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Produit Priver</span></h2>
+  <div class="row px-xl-5">
+    <div class="col-lg-12">
+      <div class="d-flex justify-content-between mb-3">
+       
+      </div>
+    </div>
+    {% for produit in c %}
+    <div class="col-lg-3 col-md-4 col-sm-6 pb-1 product-item">
+      <div class="product-item bg-light mb-4 custom-height">
+        <div class="product-img position-relative overflow-hidden">
+          <img class="img-fluid w-100" src="{{ asset('uploadsProdPriver/' ~ produit.image) }}" alt="{{ produit.nom }}" >
+          <div class="product-action">
+            <form action="{{ path('app_updateProduitPriver', {'id': produit.id}) }}">
+              <button type="submit" class="btn btn-outline-dark btn-square"><i class="far fa-edit"></i></button>
+            </form>
+            <form action="{{ path('app_deletePP', {'id': produit.id}) }}" >
+              <button type="submit" class="btn btn-outline-dark btn-square"><i class="fa fa-trash"></i></button>
+            </form>
+            <form action="{{ path('app_readProduitPriverByID', {'id': produit.id}) }}" >
+              <button type="submit" class="btn btn-outline-dark btn-square"><i class="fas fa-eye"></i></i></button>
+            </form>
+          </div>
+        </div>
+        <div class="text-center py-4">
+          <a class="h6 text-decoration-none text-truncate" href="">{{ produit.nom }}</a>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+  <div class="pagination">
+    {{ knp_pagination_render(c, 'pagination.html.twig') }}
+</div>
+</div>
+{% endif %}
+
+
+ 
+
+{% endblock %}

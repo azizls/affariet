@@ -1,0 +1,25 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+    <h1>Réservation de {{ event.nomEvent }}</h1>
+    <h1> {{ccc}} </h1>
+    <h1> {{X}} </h1>
+    {% if form_errors(form) %}
+        <div class="alert alert-danger">
+            {{ form_errors(form) }}
+        </div>
+    {% endif %}
+
+    {{ form_start(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.nombre_reservations) }}
+        {{ form_widget(form.nombre_reservations) }}
+        {{ form_errors(form.nombre_reservations) }}
+    </div>
+
+    {{ form_widget(form.submit) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}

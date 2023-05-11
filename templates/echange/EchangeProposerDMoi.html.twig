@@ -1,0 +1,93 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+   
+  <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Echange</a>
+                    <a class="breadcrumb-item text-dark" href="#">Les Echange Vous Proposer </a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+{% if e|length == 0 %}
+    <h1 style="text-align: center; color: gray; padding: 150px 0;">Aucune Proposition n'a pas ete creer d'apres vous</h1>
+
+{% else %}
+        {% for echange in e %}
+        <div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3"> Une Echange Proposer D'apres Vous</span></h2>
+    
+    <div class="row px-xl-5">
+        <div class="col-12 mb-4">
+        
+            <div class="row px-xl-5">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="product-item bg-light mb-4">
+                    <div class="text-center py-4">
+                             <a class="h6 text-decoration-none text-truncate" href="">votre porduit priver</a>
+                            
+                        </div>
+                        <div class="product-img position-relative overflow-hidden">
+                            <img src="{{ asset('uploadsProdPriver/' ~ echange.ProduitPrives.image) }}" class="img-fluid" >
+                            <div class="product-action">
+        <form action="{{ path('app_readProduitPriver_echange_update', {'id': echange.id}) }}">
+          <button type="submit" class="btn btn-outline-dark btn-square"><i class="fa fa-sync-alt"></i></button>
+        </form>
+        
+      </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <a class="h6 text-decoration-none text-truncate" href="">{{ echange.ProduitPrives.nom }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                
+                    <div class="product-item bg-light mb-4">
+                    <div class="text-center py-4">
+                             <a class="h6 text-decoration-none text-truncate" href="">Le produit que vous voulez</a>
+                            
+                        </div>
+                        <div class="product-img position-relative overflow-hidden">
+                            <img src="{{ asset('uploads/produit/') ~ echange.produit.imageProduit  }}" class="img-fluid" >
+                        </div>
+                        <div class="text-center py-4">
+                             <a class="h6 text-decoration-none text-truncate" href="">Nom : {{ echange.produit.nomProduit }}</a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                
+                    <div style="text-align:center;">
+    <form action="{{ path('app_EchangeDelete', {'id': echange.id}) }}">
+        <button type="submit" class="btn btn-danger">Annuler l'échange</button>
+    </form>
+</div>
+                
+               
+                
+            
+        </div> 
+
+         </div>
+         <div class="message-icon">
+  <i class="fa fa-envelope"></i>
+  <span class="badge">3</span>
+</div>
+</div>
+
+        {% endfor %}
+   
+{% endif %}
+
+
+
+
+
+    
+{% endblock %}

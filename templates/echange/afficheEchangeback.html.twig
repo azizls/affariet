@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<main id="main" class="main">
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title">Recherche Suggesteur</h4>
+
+            <form class="row g-3">
+                <div class="col-auto">
+                     <input id="myInput" type="text" value="" name="Search" class="form-control" placeholder=" search" autofocus>
+                </div>
+                
+            </form>
+
+            <h5 class="card-title">Table Echange</h5>
+
+            <!-- Table with hoverable rows -->
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom Produit</th>
+                        <th>Nom Produit priver Proposer</th>
+                        <th>Proprietaire de produit</th>
+                        <th>Nom suggesteur</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    {% for k in e %}
+                    <tr>
+                        <td>{{k.id}}</td>
+                        <td>{{k.produit.nomproduit}}</td>
+                        <td>{{k.ProduitPrives.nom}}</td>
+                        <td>{{k.produit.getIdUser().getNom()}}</td>
+                        <td>{{k.ProduitPrives.iduser.getNom()}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!-- End Table with hoverable rows -->
+
+        </div>
+    </div>
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+{% endblock %}

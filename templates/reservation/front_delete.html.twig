@@ -1,0 +1,23 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+    <h1>Annulation de réservation</h1>
+    <p>Êtes-vous sûr de vouloir annuler la réservation suivante :</p>
+    <ul>
+        <li>Nom de l'événement : {{ reservation.idEvent.nomEvent }}</li>
+        <li>Nombre de réservations effectuées : {{ reservation.nbrDeRes }}</li>
+    </ul>
+    {% if form_errors(form) %}
+        <div class="alert alert-danger">
+            {{ form_errors(form) }}
+        </div>
+    {% endif %}
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.nombre_reservations) }}
+        {{ form_widget(form.nombre_reservations) }}
+        {{ form_errors(form.nombre_reservations) }}
+    </div>
+    {{ form_widget(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}

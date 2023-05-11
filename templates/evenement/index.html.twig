@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement index{% endblock %}
+{% block body %}
+<main id="main" class="main">
+    <h1>Evenement index</h1>
+
+    <div class="table-container">
+    <table class="my-table">
+            <tr>
+                <th class="small-cell">Id</th>
+                <th class="small-cell">Nom</th>
+                <th class="small-cell">Emplacement</th>
+                <th class="small-cell">Date de début</th>
+                <th class="small-cell">Date de fin</th>
+                <th class="small-cell">Description</th>
+                <th class="small-cell">Prix</th>
+                <th class="small-cell">Affiche</th>
+                <th class="small-cell">Nombre max</th>
+                <th class="small-cell">Actions</th>
+            </tr>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td class="small-cell">{{ evenement.idEvent }}</td>
+                <td class="small-cell">{{ evenement.nomEvent }}</td>
+                <td class="small-cell">{{ evenement.emplacement }}</td>
+                <td class="small-cell">{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d') : '' }}</td>
+                <td class="small-cell">{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d') : '' }}</td>
+                <td class="small-cell">{{ evenement.descriptionEvent }}</td>
+                <td class="small-cell">{{ evenement.prix }}</td>
+                <td class="small-cell"><img src="{{ asset('uploads/event_images/' ~ evenement.affiche) }}" alt="{{ evenement.nomEvent }}" style="max-width: 100px;"></td>
+                <td class="small-cell">{{ evenement.nbrMax }}</td>
+                <td class="small-cell">
+                    <a href="{{ path('app_evenement_show', {'idEvent': evenement.idEvent}) }}">Voir</a>
+                    <a href="{{ path('app_evenement_edit', {'idEvent': evenement.idEvent}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">Aucun enregistrement trouvé.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+  <div class="d-flex justify-content-end mt-3">
+        <a href="{{ path('app_evenement_new') }}" class="btn btn-primary">Créer un nouvel événement</a>
+    </div>
+    </main>
+{% endblock %}

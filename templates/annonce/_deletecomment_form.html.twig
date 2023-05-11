@@ -1,0 +1,4 @@
+<form action="{{ path('app_commentaire_deletecomment', {'idCommentaire': commentaire.idCommentaire}) }}" method="POST">
+    {{ csrf_token('deleteCommentaire' ~ commentaire.id) }}
+    <input type="submit" value="Supprimer le commentaire">
+</form>

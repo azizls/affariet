@@ -1,0 +1,96 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Événement{% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+      
+
+     <!-- CSS -->
+     <style>
+     #localisationEvent { 
+        height: 400px;
+         }
+</style>
+    {% if evenement.affiche is not null %}
+        <div style="text-align:center;">
+            <img src="{{ asset('uploads/event_images/' ~ evenement.affiche) }}" alt="{{ evenement.nomEvent }}" style="max-width: 100%; max-height: 400px;"/>
+        </div>
+         <div class="col-lg-4 ftco-animate">
+        <div id="localisationEvent" class="bg-white"></div>
+      </div>
+        <br>
+    {% endif %}
+
+    <h1 style="text-align:center;">{{ evenement.nomEvent }}</h1>
+
+    <table class="table" style="margin:auto;">
+        <tbody>
+            <tr>
+                <th>Identifiant de l'événement</th>
+                <td>{{ evenement.idEvent }}</td>
+            </tr>
+            <tr>
+                <th>Emplacement</th>
+                <td>{{ evenement.emplacement }}</td>
+            </tr>
+            <tr>
+                <th>Date de début</th>
+                <td>{{ evenement.dateDebut ? evenement.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date de fin</th>
+                <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ evenement.descriptionEvent }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ evenement.prix }}</td>
+            </tr>
+            <tr>
+                <th>Nombre maximum de participants</th>
+                <td>{{ evenement.nbrMax }}</td>
+            </tr>
+        </tbody>
+    </table>
+   
+    <br>
+
+    <div style="text-align:center;">
+        <a href="{{ path('app_evenement_front_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+        <button onclick="location.href='{{ path('reservation_create', {'id': evenement.idEvent}) }}'" type="button" class="btn btn-success">Réserver</button>
+
+       
+    </div>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+
+     <script>
+     //on initialise la carte 
+     var carte = L.map('localisationEvent').setView([36.81897, 10.16579], 13);
+
+
+    //on charge les "tuiles"
+   L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                // Il est toujours bien de laisser le lien vers la source des données
+                attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                minZoom: 1,
+                maxZoom: 20
+            }).addTo(carte);
+var latlng = "{{ evenement.Emplacement }}"; 
+var latlngArray = latlng.split(","); 
+var lat = parseFloat(latlngArray[0]); 
+var lng = parseFloat(latlngArray[1]); 
+
+
+var position = L.latLng(lat, lng);
+var marker = L.marker(position).addTo(carte);
+</script>
+{% endblock %}

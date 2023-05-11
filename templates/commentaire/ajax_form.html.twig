@@ -1,0 +1,42 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+    <h1>Créer un commentaire</h1>
+
+    {{ form_start(form, {'id': 'comment-form', 'data-url': path('app_commentaire_commenter_ajax', {'idAnnonce': annonce.id})}) }}
+    {{ form_row(form.comment) }}
+
+    <button type="submit" id="submit-comment">Poster</button>
+    {{ form_end(form) }}
+
+    <div id="commentaire-list">
+        {% include 'commentaire/_commentaires.html.twig' with {'commentaires': annonce.commentaires} %}
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#comment-form').submit(function(e) {
+                e.preventDefault(); // Empêche la soumission du formulaire
+                var form = $(this);
+                var url = form.attr('action');
+                var method = form.attr('method');
+                var formData = form.serialize();
+                $.ajax({
+                    url: url,
+                    method: method,
+                    data: formData,
+                    success: function(data) {
+                        if (data.success) {
+                            $('#comment-form')[0].reset(); // Efface le formulaire
+                            $('#commentaire-list').html(data.commentaires); // Met à jour la liste des commentaires
+                        }
+                        alert(data.message);
+                    },
+                    error: function() {
+                        alert('Une erreur s\'est produite lors de la soumission du formulaire.');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

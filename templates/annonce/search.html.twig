@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Résultats de la recherche</h1>
+
+    {% if annonces is not empty %}
+       <table class="table">
+        <thead>
+            <tr>
+                <th>IdAnnonce</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>DateAnnonce</th>
+                <th>Image</th>
+                <th>User</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+            <tbody>
+                {% for annonce in annonces %}
+                    <tr>
+                          <td>{{ annonce.idAnnonce }}</td>
+                <td>{{ annonce.type }}</td>
+                <td>{{ annonce.description }}</td>
+                <td>{{ annonce.dateAnnonce ? annonce.dateAnnonce|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ annonce.image }}</td>
+            <td>{{ annonce.idUser.email ?? 'N/A' }}</td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Aucun résultat trouvé pour votre recherche.</p>
+    {% endif %}
+{% endblock %}

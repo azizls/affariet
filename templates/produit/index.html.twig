@@ -1,0 +1,122 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+
+<h1>Produit index</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<h2><a href="{{ path('app_produit_new') }}">new</a></h2>
+<h3><a href="{{ path('app_produit_produitbyuser') }}">mes produit</a></h3>
+{% block search  %}  
+    <input id="myInput" type="text" value="" name="Search" class="form-control" placeholder=" search" autofocus>
+{% endblock  %} 
+<button id="sortBtn">Sort by name</button>
+
+    {{ form_start(form) }}
+
+<div class="mb-3">
+    {{ form_label(form.category, 'Category', {'label_attr': {'class': 'form-label'}}) }}
+    {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.category) }}
+</div>
+
+<div class="mb-3">
+    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+</div>
+
+{{ form_end(form) }}
+
+
+<div id="produitContainer" style="display: flex; flex-wrap: wrap;">
+    {% for produit in produits %}
+    <div data-name="{{ produit.nomProduit }}" class="product" style="border: 1px solid #ccc; padding: 10px; margin: 10px; width: 250px;">
+        <div style="margin-bottom: 10px;">
+            <img src="{{ asset ('uploads/produit/') ~ produit.imageProduit }}" alt="{{ produit.nomProduit }}" style="width: 100%; height: 200px; object-fit: cover;">
+        </div>
+        <div style="font-weight: bold; margin-bottom: 5px;">{{ produit.nomProduit }}</div>
+        <div style="margin-bottom: 10px;">{{ produit.descriptionProduit }}</div>
+        <div style="font-weight: bold; margin-bottom: 5px;">{{ produit.prixProduit }}</div>
+        <div style="display: flex; justify-content: space-between;">
+            <a href="{{ path('app_produit_show', {'id_produit': produit.idProduit}) }}">Show</a>
+           <a href="{{ path('favoris_add', {'id_produit': produit.idProduit}) }}" class="btn btn-link">
+    <i class="far fa-heart"></i>
+</a>
+ <form action="{{ path('app_readProduitPriver_echange', {'id': produit.idProduit}) }}">
+    <button type="submit">Proposer Echange</button>
+</form>
+     <form action="{{ path('payement', {'id': produit.idProduit}) }}">
+    <button type="submit">Commande</button>
+</form>
+
+
+        </div>
+    </div>
+    {% else %}
+    <div class="no-records-found">no records found</div>
+    {% endfor %}
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("div.product").filter(function () {
+                $(this).toggle($(this).data("name").toLowerCase().indexOf(value) > -1)
+            });
+        });
+        $("#sortPriceBtn").on("click", function () {
+    var produits = $("div.product");
+    produits.sort(function (a, b) {
+        var aPrice = parseFloat($(a).find("div.prix").text().trim());
+        var bPrice = parseFloat($(b).find("div.prix").text().trim());
+        return aPrice - bPrice;
+    });
+    $("#produitContainer").html(produits);
+});
+$(document).on("click", ".product .fa-heart", function () {
+    $(this).toggleClass("far fas"); // toggle the heart icon's classes
+}); 
+$(document).on("click", ".product .fa-heart", function () {
+    $(this).toggleClass("far fas"); // toggle the heart icon's classes
+});
+
+$(document).ready(function() {
+  // Add event listener to heart icons
+  $("i.far.fa-heart").on("click", function() {
+    // Get the product ID
+    var productId = $(this).data("product-id");
+    // Toggle the "liked" class
+    $(this).toggleClass("liked");
+    // Send an AJAX request to update the database
+    $.ajax({
+      url: "/toggle-like",
+      method: "POST",
+      data: { productId: productId },
+      success: function(response) {
+        // Handle the response if needed
+      },
+      error: function(xhr, status, error) {
+        console.error(error);
+      }
+    });
+  });
+});
+
+
+
+        $("#sortBtn").on("click", function () {
+            var produits = $("div.product");
+            produits.sort(function (a, b) {
+                var aName = $(a).data("name").toLowerCase();
+                var bName = $(b).data("name").toLowerCase();
+                return aName.localeCompare(bName);
+            });
+            $("#produitContainer").html(produits);
+        });
+    });
+</script>
+
+{% endblock %}

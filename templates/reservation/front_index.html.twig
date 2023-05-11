@@ -1,0 +1,36 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+{% if app.session.flashbag.has('error') %}
+    <div class="alert alert-danger">
+        {% for message in app.session.flashbag.get('error') %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Liste des réservations</span></h2>
+    <div class="row px-xl-5">
+        {% for reservation in reservations %}
+            <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                <div class="product-item bg-light mb-4">
+                    <div class="product-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100" src="{{ asset('uploads/event_images/' ~ reservation.idEvent.affiche) }}" alt="{{ reservation.idEvent.nomEvent }}">
+                    </div>
+                    <div class="text-center py-4">
+                        <a class="h6 text-decoration-none text-truncate" href="{{ path('app_reservation_front_show', {'idRes': reservation.idRes}) }}">{{ reservation.idEvent.nomEvent }}</a>
+                        <h6>Date de réservation : {{ reservation.dateRes|date('Y-m-d') }}</h6>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-md-12">
+                <p>Aucune réservation trouvée.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+
+    <h1>Produit index</h1>
+    <h2><a href="{{ path('app_produit_new') }}">new</a></h2>
+    <h3><a href="{{ path('app_produit_produitbyuser') }}">mes produit</a></h3>
+    <div style="display: flex; flex-wrap: wrap;">
+    {% for produit in produits %}
+        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px; width: 250px;">
+            <div style="margin-bottom: 10px;">
+                <img src="{{ asset ('uploads/produit/') ~ produit.imageProduit }}" alt="{{ produit.nomProduit }}" style="width: 100%; height: 200px; object-fit: cover;">
+            </div>
+            <div style="font-weight: bold; margin-bottom: 5px;">{{ produit.nomProduit }}</div>
+            <div style="margin-bottom: 10px;">{{ produit.descriptionProduit }}</div>
+            <div style="font-weight: bold; margin-bottom: 5px;">{{ produit.prixProduit }}</div>
+            <div style="display: flex; justify-content: space-between;">
+                <a href="{{ path('app_produit_show', {'id_produit': produit.idProduit}) }}">Show</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="no-records-found">no records found</div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

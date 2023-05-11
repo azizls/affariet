@@ -1,0 +1,77 @@
+{% extends 'front.html.twig' %}
+
+
+{% block body %}
+    <!-- Contact Start -->
+    <div class="container-fluid">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Contact Us</span></h2>
+        <div class="row px-xl-5">
+            <div class="col-lg-7 mb-5">
+                <div class="contact-form bg-light p-30">
+                    <div id="success"></div>
+                    
+                        <div class="control-group">
+                        {{ form_start(form,{attr:{novalidate:'novalidate'}}) }}
+
+                             <label for="yourName" class="form-label">Name</label>
+                            {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
+                        </div>
+                        <div class="control-group">
+                             <label for="yourName" class="form-label">Family Name</label>
+                                {{ form_widget(form.prenom,{'attr':{'class':'form-control'}}) }}
+
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                             <label for="yourName" class="form-label">Age</label>
+                                 {{ form_widget(form.age,{'attr':{'class':'form-control'}}) }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                         <div class="control-group">
+                             <label for="yourName" class="form-label">Email</label>
+                          {{ form_widget(form.email,{'attr':{'class':'form-control', 'readonly':'true'}}) }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <label for="yourName" class="form-label">Password</label>
+                                 {{ form_widget(form.mdp,{'attr':{'class':'form-control'}}) }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                         <div class="control-group">
+                            <label for="yourName" class="form-label">Your Valid Number</label>
+                                 {{ form_widget(form.numero,{'attr':{'class':'form-control'}}) }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                            <div class="control-group">
+                            <label for="yourName" class="form-label">Your Adresse</label>
+
+                                 {{ form_widget(form.adresse,{'attr':{'class':'form-control'}}) }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+
+                            <div class="col-12">
+                                            <label for="yourImage" class="form-label">Your Image</label>
+                                            <div class="invalid-feedback">Please select an image!</div>
+                                            {{ form_widget(form.image, {'attr': {'class': 'form-control', 'onchange': 'previewImage(this)'}}) }}
+                                            <img id="preview" class="mt-2" style="max-width: 100%; max-height: 200px;">
+                                        </div>
+                                
+                        <div>
+                            
+                            <button class="btn btn-primary py-2 px-4" type="submit">Modify Account</button>
+                            
+                        </div>
+                        
+                   {{ form_end(form) }}
+                      
+                </div>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+   
+
+{% endblock %}

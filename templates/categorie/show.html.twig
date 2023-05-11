@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+<main id="main" class="main">
+<div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Categories Table</h4>
+                  <a href="{{ path('app_categorie_index') }}"<button class="navbar-toggler navbar-toggler align-self-center" type="button" >back to list</a>
+            <a href="{{ path('app_categorie_edit', {'id_categorie': categorie.idCategorie}) }}" <button class="navbar-toggler navbar-toggler align-self-center" type="button" >edit</a>
+
+    {{ include('categorie/_delete_form.html.twig') }}
+                  <p class="card-description">
+                    Add class <code>.table</code>
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                <th>Id_categorie</th>
+                <td>{{ categorie.idCategorie }}</td>
+            </tr>
+            <tr>
+                <th>Nom_categorie</th>
+                <td>{{ categorie.nomCategorie }}</td>
+            </tr>
+                      </tbody>
+                      
+                    </table>
+
+            </div>
+          </div>
+</table>
+</main>
+{% endblock %}

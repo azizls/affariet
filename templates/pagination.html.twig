@@ -1,0 +1,33 @@
+{% if pageCount > 1 %}
+    <ul class="pagination">
+        {% if current > 1 %}
+            <li class="page-item">
+                <a href="{{ path(route, query|merge({(pageParameterName): 1})) }}" class="page-link">&laquo;</a>
+            </li>
+            <li class="page-item">
+                <a href="{{ path(route, query|merge({(pageParameterName): current - 1})) }}" class="page-link">&lsaquo;</a>
+            </li>
+        {% endif %}
+
+        {% for page in pagesInRange %}
+            {% if page != current %}
+                <li class="page-item">
+                    <a href="{{ path(route, query|merge({(pageParameterName): page})) }}" class="page-link">{{ page }}</a>
+                </li>
+            {% else %}
+                <li class="page-item active">
+                    <span class="page-link">{{ page }}</span>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if current < pageCount %}
+            <li class="page-item">
+                <a href="{{ path(route, query|merge({(pageParameterName): current + 1})) }}" class="page-link">&rsaquo;</a>
+            </li>
+            <li class="page-item">
+                <a href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}" class="page-link">&raquo;</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}

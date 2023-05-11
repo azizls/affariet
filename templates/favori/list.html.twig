@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des favoris{% endblock %}
+
+{% block body %}
+    <h1>Liste des favoris</h1>
+
+    {% if favoris is empty %}
+        <p>Aucun favori enregistré.</p>
+    {% else %}
+        <ul>
+            {% for favori in favoris %}
+                <li>{{ favori.getProduit().getNomProduit() }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

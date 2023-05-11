@@ -1,0 +1,45 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+   
+{% if app.session.flashbag.has('error') %}
+    <div class="alert alert-danger">
+        {% for message in app.session.flashbag.get('error') %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="container-fluid pt-5 pb-3">
+    <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Liste des annonces</span></h2>
+    <div class="row px-xl-5">
+        {% for key, annonce in annonces %}
+    {% if key % 3 == 0 %}
+        </div><div class="row px-xl-5">
+    {% endif %}
+    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+        <div class="product-item bg-light mb-4">
+            <div class="product-img position-relative overflow-hidden">
+              <a href="{{ path('app_annonce_commentairesfront', {'idAnnonce': annonce.idAnnonce}) }}"><img class="img-fluid w-100" src="{{ asset('uploads/images/' ~ annonce.image) }}" alt="{{ annonce.type }}"></a>
+
+            </div>
+            <div class="text-center py-4">
+                <a class="h6 text-decoration-none text-truncate" href="{{ path('app_annonce_indexfront', {'idAnnonce': annonce.idAnnonce}) }}">{{ annonce.type }}</a>
+                <h6>{{ annonce.description }}</h6>
+                <h6>Date : {{ annonce.dateAnnonce ? annonce.dateAnnonce|date('Y-m-d H:i:s') : '' }}</h6>
+                <h6> {{ annonce.idUser.email ?? 'N/A' }}</h6>
+               
+                <a href="{{ path('app_commentaire_commenter', {'idAnnonce': annonce.idAnnonce}) }}" class="btn btn-primary">Commenter</a>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="col-md-12">
+        <p>Pas d'annonces.</p>
+    </div>
+{% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

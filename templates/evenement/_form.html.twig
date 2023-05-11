@@ -1,0 +1,112 @@
+{{ form_start(form) }}
+
+<div class="form-group">
+    {{ form_label(form.nomEvent, 'Nom de l\'événement', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.nomEvent, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.nomEvent) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.emplacement, 'Emplacement', {'label_attr': {'class': 'control-label'}}) }}
+    <!-- Ajoutez un élément HTML pour la carte -->
+    <div id="localisationEvent" ></div>
+    {{ form_widget(form.emplacement, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.emplacement) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.dateDebut, 'Date de début', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.dateDebut) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.dateFin, 'Date de fin', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.dateFin, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.dateFin) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.descriptionEvent, 'Description de l\'événement', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.descriptionEvent, {'attr': {'class': 'form-control', 'rows': 5}, 'block_name': 'textarea_widget'}) }}
+    {{ form_errors(form.descriptionEvent) }}
+</div>
+
+
+
+<div class="form-group">
+    {{ form_label(form.prix, 'Prix', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.prix) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.affiche, 'Affiche', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.affiche, {'attr': {'class': 'form-control-file'}}) }}
+    {{ form_errors(form.affiche) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.nbrMax, 'Nombre maximum de participants', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.nbrMax, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.nbrMax) }}
+</div>
+
+<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form) }}
+
+
+<!-- Ajoutez les bibliothèques Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+      
+
+     <!-- CSS -->
+     <style>
+     #localisationEvent { 
+        height: 400px;
+         }
+</style>
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+<script>
+    // Initialisez la carte
+     var carte = L.map('localisationEvent').setView([36.81897, 10.16579], 13);
+
+    //on charge les "tuiles"
+   L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                // Il est toujours bien de laisser le lien vers la source des données
+                attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                minZoom: 1,
+                maxZoom: 20
+            }).addTo(carte);
+
+    // Ajoutez un marqueur à la carte
+       // var marqueur = L.marker([36.8139969, 10.1363018]).addTo(carte);
+
+
+
+    // Lorsqu'un utilisateur clique sur la carte, mettez à jour la valeur du champ caché
+   
+
+
+    var popup = L.popup();
+
+function onMapClick(e) {
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(carte);
+
+    document.getElementById('{{ form.emplacement.vars.id }}').value = e.latlng.lat + ',' + e.latlng.lng;
+    L.marker(e.latlng).addTo(carte);
+
+
+}
+
+carte.on('click', onMapClick);
+
+</script>

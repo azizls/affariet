@@ -1,0 +1,60 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}New Commentaire{% endblock %}
+
+{% block body %}
+    <h1>Create new Commentaire</h1>
+
+    {# Formulaire classique #}
+    {{ form_start(form) }}
+    {{ form_row(form.commentaire) }}
+    {{ form_row(form.idUser1, { 'label': 'User' }) }}
+    {{ form_row(form.idAnnonce, { 'label': 'Annonce' }) }}
+    {{ form_rest(form) }}
+    <button type="submit">Create</button>
+    {{ form_end(form) }}
+
+    {# Formulaire AJAX #}
+    <form id="comment-form" method="POST" action="{{ path('app_commentaire_commenter', {'idAnnonce': annonce.idAnnonce}) }}">
+        {{ form_row(form.commentaire) }}
+        {{ form_row(form.idUser1, { 'label': 'User' }) }}
+        {{ form_row(form.idAnnonce, { 'label': 'Annonce' }) }}
+        <button type="submit">Create</button>
+    </form>
+
+    {% if commentaire.idAnnonce is not null %}
+        <a href="{{ path('app_commentaire_index', {'idAnnonce': commentaire.idAnnonce.id|raw}) }}">back to list</a>
+    {% endif %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script>
+            $(document).ready(function() {
+                $('#comment-form').submit(function(e) {
+                    e.preventDefault(); // Empêche la soumission du formulaire
+                    var form = $(this);
+                    var url = form.attr('action');
+                    var method = form.attr('method');
+                    var formData = form.serialize();
+                    $.ajax({
+                        url: url,
+                        method: method,
+                        data: formData,
+                        success: function(data) {
+                            if (data.success) {
+                                // Mise à jour de la page avec les nouvelles données
+                                $('#comment-form textarea').val('');
+                                $('#comment-list').append('<div class="comment">' + data.commentaire + '</div>');
+                            } else {
+                                alert('Une erreur est survenue lors de la création du commentaire.');
+                            }
+                        },
+                        error: function() {
+                            alert('Une erreur est survenue lors de la création du commentaire.');
+                        }
+                    });
+                });
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

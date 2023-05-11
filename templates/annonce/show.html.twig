@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Annonce{% endblock %}
+
+{% block body %}
+    <h1>Annonce</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdAnnonce</th>
+                <td>{{ annonce.idAnnonce }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ annonce.type }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ annonce.description }}</td>
+            </tr>
+            <tr>
+                <th>DateAnnonce</th>
+                <td>{{ annonce.dateAnnonce ? annonce.dateAnnonce|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+           <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+            <div class="product-item bg-light mb-4 h-100">
+            <div class="product-img position-relative overflow-hidden">
+              <a href="{{ path('app_annonce_commentaires', {'idAnnonce': annonce.idAnnonce}) }}"><img class="img-fluid w-100" src="{{ asset('uploads/images/' ~ annonce.image) }}" alt="{{ annonce.type }}"></a>
+
+            </div>
+
+            <tr>
+                <th>Nblikes</th>
+                <td>{{ annonce.nblikes }}</td>
+            </tr>
+            <tr>
+                <th>Nbdislikes</th>
+                <td>{{ annonce.nbdislikes }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_annonce_index') }}">back to list</a>
+
+    <a href="{{ path('app_annonce_edit', {'idAnnonce': annonce.idAnnonce}) }}">edit</a>
+
+    {{ include('annonce/_delete_form.html.twig') }}
+{% endblock %}

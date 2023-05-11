@@ -1,0 +1,63 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+{% if e|length == 0 %}
+    <h1 style="text-align: center; color: gray; padding: 150px 0;">Aucune Proposition</h1>
+
+
+{% else %}
+<div class="container-fluid ">
+  <h2 >Les Proposition</span></h2>
+  
+    {% for produit in p %}
+    <div class="container-fluid ">
+  <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Proposition</span></h2>
+    <div class="col-lg-3 col-md-4 col-sm-6 mx-auto">
+  <div class="product-item bg-light mb-4">
+    <div class="text-center py-4">
+      <a class="h6 text-decoration-none text-truncate" href="">Votre produit </a>
+    </div>
+    <div class="product-img position-relative overflow-hidden">
+      <img src="{{ asset('uploads/produit/') ~ produit.imageProduit  }}" class="img-fluid" >
+    </div>
+    <div class="text-center py-4">
+      <a class="h6 text-decoration-none text-truncate" href="">Nom : {{ produit.nomProduit }}</a>
+    </div>
+  </div>
+</div>
+
+    <div class="container-fluid pt-5 pb-3">
+  <h3>Les Produit Proposer</span></h2>
+  <div class="row px-xl-5">
+ {% for echange in e %}
+  {% if produit.idProduit == echange.produit.idProduit %}
+    <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+      <div class="product-item bg-light mb-4">
+        <div class="product-img position-relative overflow-hidden">
+          <img class="img-fluid w-100" src="{{ asset('uploadsProdPriver/' ~ echange.ProduitPrives.image) }} "  >
+          <div class="product-action">
+           
+            <form action="{{ path('app_EchangeDeleteReceiverView', {'id': echange.id}) }}" >
+              <button type="submit" class="btn btn-outline-dark btn-square"><i class="fa fa-trash"></i></button>
+            </form>
+            <form action="{{ path('app_readProduitPriverByIDView', {'id': echange.ProduitPrives.id,'iduser': echange.produit.getIdUser().idUser}) }}" >
+              <button type="submit" class="btn btn-outline-dark btn-square"><i class="fas fa-eye"></i></i></button>
+            </form>
+            
+          </div>
+        </div>
+        <div class="text-center py-4">
+          <a class="h6 text-decoration-none text-truncate" href="">{{ echange.ProduitPrives.nom }}</a>
+          
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+     </div>
+    </div>
+   
+    {% endfor %}
+  
+</div>
+{% endif %}
+{% endblock %}

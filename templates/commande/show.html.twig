@@ -1,0 +1,80 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center ">
+		{% for type, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ type }} alert-dismissible fade show d-flex align-items-center">
+					<i class="bi bi-check-circle me-2"></i>
+					<div>
+						{{ message }}
+					</div>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+
+			{% endfor %}
+		{% endfor %}
+	</div>
+
+<div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-light table-borderless table-hover text-center mb-0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+				{% for produit in numbProduit %}
+                        <tr>
+                            <td class="align-middle"><img src="{{ asset('uploads/produit/' ~ produit['produit'].getImageProduit()) }}"  style="width: 50px;"> {{ produit['produit'].getNomProduit() }}</td>
+                            <td class="align-middle">${{ produit['produit'].getPrixProduit() }}</td>
+                            <td class="align-middle">{{ produit['quantite'] }}</td>
+                            <td class="align-middle">${{ produit['total'] }}</td>
+                           
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-light table-borderless table-hover text-center mb-0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>date</th>
+                            <th>annuler</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+				{% for commande in commandes %}
+                        <tr>
+                            <td class="align-middle"><img src="{{ asset('uploads/produit/' ~ commande.getProduit().getImageProduit() ) }}"  style="width: 50px;"> {{ commande.produit.getNomProduit() }}</td>
+                            <td class="align-middle">${{ commande.getProduit().getPrixProduit() }}</td>
+                            <td class="align-middle">{{ commande.getDateCommande()|date('Y-m-d H:i:s') }}</td>
+                            <td><form action="{{path('app_deleteCommande',{'id':commande.id}) }}">
+                            <button> Annuler</button></form></td>
+                            
+                           
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'front.html.twig' %}
+
+
+
+{% block body %}
+    {% if produit.image is not null %}
+        <div style="text-align:center;">
+            <img src="{{ asset('uploadsProdPriver/' ~ produit.image) }}" alt="{{ produit.nom }}" style="max-width: 100%; max-height: 400px;"/>
+        </div>
+        <br>
+    {% endif %}
+
+    <h1 style="text-align:center;">{{ produit.nom}}</h1>
+
+    <table class="table" style="margin:auto;">
+        <tbody>
+            
+            <tr>
+                <th>Description</th>
+                <td>{{ produit.description }}</td>
+            </tr>
+           
+            <tr>
+                <th>Etat</th>
+                <td>{{ produit.etat }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <br>
+
+    <div style="text-align:center;">
+         <form action="{{ path('app_updateProduitPriver', {'id': produit.id}) }}">
+    <button type="submit" class="btn btn-primary"> Modifier</button>
+</form>
+<h6> </h6>
+<form action="{{ path('app_deletePP', {'id': produit.id}) }}">
+    <button type="submit" class="btn btn-danger"> Supprimer</button>
+</form>
+
+        
+    </div>
+
+{% endblock %}
