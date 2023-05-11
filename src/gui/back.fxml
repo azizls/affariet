@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0" styleClass="my-pane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BackController">
+   <children>
+      <Button fx:id="btnDelete" layoutX="765.0" layoutY="339.0" mnemonicParsing="false" onAction="#fdelete" prefHeight="28.0" prefWidth="70.0" styleClass="bg-white" stylesheets="@designDashbord.css" text="supprimer" />
+      <Button fx:id="btn_mail" layoutX="647.0" layoutY="339.0" mnemonicParsing="false" onAction="#envoyer_mail" prefHeight="28.0" prefWidth="84.0" styleClass="bg-white" stylesheets="@designDashbord.css" text="envoyer mail" />
+      <TableView fx:id="id_list" layoutX="290.0" layoutY="63.0" onMouseClicked="#SelectedItems" prefHeight="200.0" prefWidth="612.0">
+        <columns>
+          <TableColumn fx:id="id_id" prefWidth="45.0" text="id" />
+          <TableColumn fx:id="id_date" prefWidth="107.0" text="date" />
+            <TableColumn fx:id="id_decription" prefWidth="153.0" text="description" />
+            <TableColumn fx:id="id_type" prefWidth="182.0" text="type" />
+            <TableColumn fx:id="id_etat" prefWidth="111.0" text="etat" />
+        </columns>
+      </TableView>
+      <Button fx:id="id_modifier" layoutX="526.0" layoutY="340.0" mnemonicParsing="false" onAction="#modifier_garage" prefHeight="26.0" prefWidth="70.0" styleClass="bg-white" stylesheets="@designDashbord.css" text="modifier" />
+      <ComboBox fx:id="comboEtat" layoutX="300.0" layoutY="338.0" prefWidth="150.0" styleClass="bg-white" stylesheets="@designDashbord.css" />
+      <Pane layoutY="-5.0" prefHeight="847.0" prefWidth="275.0" styleClass="card3" stylesheets="@designDashbord.css">
+         <children>
+            <ImageView fitHeight="154.0" fitWidth="235.0" layoutX="22.0" layoutY="23.0">
+               <image>
+                  <Image url="@../image/1.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="90.0" layoutY="370.0" mnemonicParsing="false" onAction="#produit_back" prefHeight="25.0" prefWidth="135.0" styleClass="nav-btn" text="Produit" />
+            <Button layoutX="90.0" layoutY="425.0" mnemonicParsing="false" onAction="#commande_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Commande" />
+            <Button layoutX="90.0" layoutY="475.0" mnemonicParsing="false" onAction="#evennement_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Evennement" />
+            <Button layoutX="90.0" layoutY="525.0" mnemonicParsing="false" onAction="#blog_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Blog" />
+            <Button layoutX="90.0" layoutY="575.0" mnemonicParsing="false" onAction="#reclamation_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Reclamation" />
+            <Button layoutX="90.0" layoutY="314.0" mnemonicParsing="false" onAction="#user_back" prefHeight="25.0" prefWidth="135.0" styleClass="nav-btn" text="User" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

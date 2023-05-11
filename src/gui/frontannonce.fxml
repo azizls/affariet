@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+<AnchorPane prefHeight="960.0" prefWidth="1735.0" style="-fx-background-radius: 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FrontannonceCrontroller">
+   <children>
+       
+       
+      <AnchorPane layoutX="-71.0" prefHeight="955.0" prefWidth="1791.0" style="-fx-background-color: #030307; -fx-background-radius: 15;">
+         <children>
+             
+             
+            <StackPane layoutX="360.0" prefHeight="955.0" prefWidth="1442.0">
+               <children>
+                  <Pane fx:id="pnl_annonce" prefHeight="955.0" prefWidth="1533.0" style="-fx-background-color: FFF;" styleClass="my-button">
+                     <children>
+                        <AnchorPane layoutX="172.0" layoutY="62.0" prefHeight="766.0" prefWidth="857.0" style="-fx-background-color: FFF; -fx-background-radius: 10;" stylesheets="@../css/fullpackstyling2.css">
+                           <children>
+                              <ScrollPane fx:id="scrollpane_Salle" layoutX="-91.0" layoutY="83.0" prefHeight="722.0" prefWidth="1250.0" style="-fx-background-color: #131022;">
+                                 <content>
+                                    <HBox fx:id="hbox_annonce" style="-fx-border-color: FFF; -fx-background-color: FFF;" stylesheets="@../css/fullpackstyling2.css" />
+                                 </content>
+                              </ScrollPane>
+                              <Button layoutX="114.0" layoutY="14.0" mnemonicParsing="false" onAction="#affichermesannonces" prefHeight="26.0" prefWidth="178.0" styleClass="my-button" stylesheets="@affarietstyleuser.css" text="afficher mes annonces" />
+                               <ComboBox fx:id="bouton_filtrer" layoutX="-83.0" layoutY="14.0" prefHeight="26.0" prefWidth="178.0" promptText="filtrer" styleClass="my-button" stylesheets="@affarietstyleuser.css">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                      
+                                    </FXCollections>
+                                 </items>
+                              </ComboBox>
+                              <Button layoutX="318.0" layoutY="-13.0" onAction="#actualiserContenu" styleClass="my-button" stylesheets="@affarietstyleuser.css" text="Actualiser" />
+                              <Button fx:id="button_recherche" layoutX="673.0" layoutY="-18.0" mnemonicParsing="false" onAction="#rechercher" prefHeight="37.0" prefWidth="149.0" styleClass="my-button" stylesheets="@affarietstyleuser.css" text="chercher" />
+                            
+                                 </children>
+                        </AnchorPane>
+                        <Button fx:id="button_news" layoutX="83.0" layoutY="26.0" mnemonicParsing="false" onAction="#news" prefHeight="25.0" prefWidth="178.0" styleClass="my-button" stylesheets="@affarietstyleuser.css" text="Tendance" />
+                        <Button fx:id="button_publier" layoutX="280.0" layoutY="26.0" mnemonicParsing="false" onAction="#publier" prefHeight="25.0" prefWidth="178.0" styleClass="my-button" stylesheets="@affarietstyleuser.css" text="publier une annonce" />
+                        <TextField fx:id="texte_recherche" layoutX="636.0" layoutY="47.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </StackPane>
+           
+         </children>
+      </AnchorPane>
+      <Pane layoutX="-2.0" layoutY="-3.0" prefHeight="963.0" prefWidth="301.0" styleClass="card3" stylesheets="@designDashbord.css">
+         <children>
+            <ImageView fitHeight="154.0" fitWidth="235.0" layoutX="22.0" layoutY="23.0">
+               <image>
+                  <Image url="@../image/1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Image_user" fitHeight="67.0" fitWidth="71.0" layoutX="22.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="95.0" layoutY="271.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="49.0" prefWidth="151.0" styleClass="nav-btn" stylesheets="@designDashbord.css" text="Mon profil" />
+            <Button layoutX="90.0" layoutY="345.0" mnemonicParsing="false" onAction="#produit" prefHeight="25.0" prefWidth="135.0" styleClass="nav-btn" text="Produit" />
+            <Button layoutX="90.0" layoutY="432.0" mnemonicParsing="false" onAction="#evenement" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Evennement" />
+            <Button layoutX="90.0" layoutY="494.0" mnemonicParsing="false" onAction="#blog" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Blog" />
+            <Button layoutX="90.0" layoutY="545.0" mnemonicParsing="false" onAction="#reclamation" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Reclamation" />
+            <ImageView fitHeight="223.0" fitWidth="246.0" layoutX="28.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imageuser/1.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="90.0" layoutY="387.0" mnemonicParsing="false" onAction="#commande" prefHeight="34.0" prefWidth="178.0" styleClass="nav-btn" text="Mes commandes" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AffichercommentaireController">
+   <children>
+      <TableView fx:id="table_commentaire" layoutX="-1.0" prefHeight="400.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="texte_id_commentaire" prefWidth="75.0" text="id_commentaire" />
+            <TableColumn fx:id="texte_annonce" prefWidth="75.0" text="annonce" />
+          <TableColumn fx:id="texte_comment" prefWidth="75.0" text="comment" />
+            <TableColumn fx:id="texte_user1" prefWidth="75.0" text="user" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

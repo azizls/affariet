@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="612.0" prefWidth="903.0" stylesheets="@affarietstyleuser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.InscriptionController">
+   <children>
+      <TextField fx:id="text_nom" layoutX="341.0" layoutY="80.0" />
+      <TextField fx:id="text_prenom" layoutX="624.0" layoutY="80.0" prefHeight="28.0" prefWidth="150.0" />
+      <TextField fx:id="text_age" layoutX="342.0" layoutY="173.0" />
+      <TextField fx:id="text_email" layoutX="624.0" layoutY="163.0" prefHeight="28.0" prefWidth="150.0" />
+      <TextField fx:id="text_mdp" layoutX="633.0" layoutY="242.0" />
+      <TextField fx:id="text_adresse" layoutX="341.0" layoutY="306.0" prefHeight="27.0" prefWidth="141.0" />
+      <Label layoutX="262.0" layoutY="84.0" text="nom" />
+      <Label layoutX="545.0" layoutY="84.0" text="prenom" />
+      <Label layoutX="262.0" layoutY="177.0" prefHeight="20.0" prefWidth="51.0" text="age" />
+      <Label layoutX="545.0" layoutY="164.0" text="email" />
+      <Label layoutX="516.0" layoutY="246.0" text="mot de passe" />
+      <Label layoutX="247.0" layoutY="310.0" text="adresse" />
+      <Button fx:id="button_apply" layoutX="464.0" layoutY="489.0" mnemonicParsing="false" onAction="#sauvgarder" prefHeight="39.0" prefWidth="157.0" styleClass="my-button" text="apply" />
+      <TextField fx:id="text_num" layoutX="341.0" layoutY="242.0" prefHeight="28.0" prefWidth="141.0" />
+      <Label layoutX="249.0" layoutY="246.0" text="numero" />
+      <Button fx:id="text_buton_image" layoutX="601.0" layoutY="390.0" mnemonicParsing="false" onAction="#image" prefHeight="25.0" prefWidth="124.0" styleClass="my-button" text="image" />
+      <TextField fx:id="text_image" layoutX="341.0" layoutY="389.0" prefHeight="25.0" prefWidth="220.0" />
+      <Label fx:id="labelmdp" graphicTextGap="2.0" layoutX="601.0" layoutY="273.0" prefHeight="66.0" prefWidth="204.0" styleClass="labelmdp" stylesheets="@../../../../Documents/NetBeansProjects/affariet/src/affariet/affarietstyle.css" text=" Veuillez saisir un mot de passe contenant au moins 8 caractères avec au moins une lettre majuscule" />
+      <Pane id="my-pane" prefHeight="612.0" prefWidth="229.0" styleClass="card3">
+         <children>
+            <ImageView fitHeight="174.0" fitWidth="204.0" layoutX="19.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imageuser/1.png" />
+               </image>
+            </ImageView>
+         </children>
+         <stylesheets>
+            <URL value="@affarietstyleuser.css" />
+            <URL value="@designDashbord.css" />
+         </stylesheets>
+      </Pane>
+   </children>
+</AnchorPane>

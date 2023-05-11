@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="847.0" prefWidth="1229.0" styleClass="my" stylesheets="@affarietstyleuser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProduitStatsController">
+   <children>
+      <Pane prefHeight="847.0" prefWidth="275.0" styleClass="card3" stylesheets="@designDashbord.css">
+         <children>
+            <ImageView fitHeight="154.0" fitWidth="235.0" layoutX="22.0" layoutY="23.0">
+               <image>
+                  <Image url="@../image/1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Image_user" fitHeight="67.0" fitWidth="71.0" layoutX="22.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="95.0" layoutY="271.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="151.0" styleClass="nav-btn" stylesheets="@designDashbord.css" text="Mon profil" />
+            <Button layoutX="90.0" layoutY="370.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" styleClass="nav-btn" text="Produit" />
+            <Button layoutX="90.0" layoutY="425.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Commande" />
+            <Button layoutX="90.0" layoutY="475.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Evennement" />
+            <Button layoutX="90.0" layoutY="525.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Blog" />
+            <Button layoutX="90.0" layoutY="575.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Reclamation" />
+            <ImageView fitHeight="177.0" fitWidth="235.0" layoutX="14.0" layoutY="35.0">
+               <image>
+                  <Image url="file:/C:/Users/lando/Documents/integration2/integration/affariet/src/image/1.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="100.0" layoutY="212.0" mnemonicParsing="false" onAction="#back" prefHeight="22.0" prefWidth="79.0" styleClass="my-button" text="back" />
+            
+         </children>
+      </Pane>
+      <Label layoutX="1086.0" layoutY="30.0" text="Disconnect" />
+     <PieChart fx:id="categoriesPieChart" layoutX="388.0" layoutY="141.0" prefHeight="386.0" prefWidth="665.0" />
+        <Label fx:id="mostProductCategoryLabel" layoutX="639.0" layoutY="615.0" prefHeight="33.0" prefWidth="164.0" />
+   </children>
+</AnchorPane>

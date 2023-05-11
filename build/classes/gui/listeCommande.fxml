@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="847.0" prefWidth="1229.0" styleClass="my" stylesheets="@affarietstyleuser.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListeCommandeController">
+   <children>
+      <Pane prefHeight="847.0" prefWidth="275.0" styleClass="card3" stylesheets="@designDashbord.css">
+         <children>
+            <ImageView fitHeight="154.0" fitWidth="235.0" layoutX="22.0" layoutY="23.0">
+               <image>
+                  <Image url="@../image/1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Image_user" fitHeight="67.0" fitWidth="71.0" layoutX="22.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="95.0" layoutY="271.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="151.0" styleClass="nav-btn" stylesheets="@designDashbord.css" text="Mon profil" />
+            <Button layoutX="90.0" layoutY="370.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" styleClass="nav-btn" text="Produit" />
+            <Button layoutX="90.0" layoutY="425.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Commande" />
+            <Button layoutX="90.0" layoutY="475.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Evennement" />
+            <Button layoutX="90.0" layoutY="525.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Blog" />
+            <Button layoutX="90.0" layoutY="575.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Reclamation" />
+            <Button layoutX="90.0" layoutY="650.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Reclamation" />
+       
+            <Label layoutX="1086.0" layoutY="30.0" text="Disconnect" />
+              
+         </children>
+      </Pane>
+      <Label layoutX="1086.0" layoutY="30.0" text="Disconnect" />
+
+
+                  
+ <TableView fx:id="tableCommande" layoutX="408.0" layoutY="244.0" prefHeight="247.0" prefWidth="569.0">
+        <columns>
+          <TableColumn fx:id="idcommandefx" prefWidth="120.0" text="id_commande" />
+          <TableColumn fx:id="produitfx" prefWidth="143.0" text="nom produit" />
+            <TableColumn fx:id="acheteurfx" prefWidth="129.0" text="nom acheteur" />
+            <TableColumn fx:id="datefx" prefWidth="129.0" text="date" />
+        </columns>
+      </TableView>
+      <Button fx:id="suppriemrfx" layoutX="1027.0" layoutY="368.0" mnemonicParsing="false" onAction="#supprimer" text="supprimer" />
+      <Button fx:id="chercherbutonyear" layoutX="748.0" layoutY="691.0" mnemonicParsing="false" onAction="#chercherYear" text="chercher" />
+      <TextField fx:id="recherYear" layoutX="718.0" layoutY="571.0" prefHeight="31.0" prefWidth="136.0" />
+      <Label layoutX="602.0" layoutY="578.0" text="chose year" />
+      <Button fx:id="afficherAll" layoutX="1036.0" layoutY="308.0" mnemonicParsing="false" onAction="#afficherAll" text="refresh" />
+      <Label layoutX="602.0" layoutY="637.0" text="chose month" />
+      <ComboBox fx:id="monthfx" layoutX="761.0" layoutY="631.0" prefHeight="31.0" prefWidth="31.0" />
+      
+                  
+        
+   </children>
+</AnchorPane>

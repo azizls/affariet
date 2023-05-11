@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="847.0" prefWidth="1229.0" styleClass="my" stylesheets="@affarietstyleuser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ProduitController">
+   <children>
+      <Pane prefHeight="847.0" prefWidth="275.0" styleClass="card3" stylesheets="@designDashbord.css">
+         <children>
+            <ImageView fitHeight="154.0" fitWidth="235.0" layoutX="22.0" layoutY="23.0">
+               <image>
+                  <Image url="@../image/1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Image_user" fitHeight="67.0" fitWidth="71.0" layoutX="22.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="95.0" layoutY="271.0" mnemonicParsing="false" onAction="#user_back" prefHeight="49.0" prefWidth="151.0" styleClass="nav-btn" stylesheets="@designDashbord.css" text="Mon profil" />
+            <Button layoutX="90.0" layoutY="370.0" mnemonicParsing="false" onAction="#produit_back" prefHeight="25.0" prefWidth="135.0" styleClass="nav-btn" text="Produit" />
+            <Button layoutX="90.0" layoutY="425.0" mnemonicParsing="false" onAction="#commande_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Commande" />
+            <Button layoutX="90.0" layoutY="475.0" mnemonicParsing="false" onAction="#evenement_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Evennement" />
+            <Button layoutX="90.0" layoutY="525.0" mnemonicParsing="false" onAction="#blog_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Blog" />
+            <Button layoutX="90.0" layoutY="575.0" mnemonicParsing="false" onAction="#reclamation_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Reclamation" />
+            <ImageView fitHeight="241.0" fitWidth="244.0" layoutX="15.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imageuser/1.png" />
+               </image>
+            </ImageView>
+            
+         </children>
+      </Pane>
+      <Label layoutX="1086.0" layoutY="30.0" text="Disconnect" />
+     <VBox layoutX="362.0" layoutY="171.0" spacing="20.0">
+         <children>
+            <Label text="All Products:" />
+            <TableView fx:id="produitTable">
+               <columns>
+                  <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="nomColumn" prefWidth="150.0" text="Name" />
+                  <TableColumn fx:id="descriptionColumn" prefWidth="200.0" text="Description" />
+                  <TableColumn fx:id="prixColumn" prefWidth="75.0" text="Price" />
+                  <TableColumn fx:id="categorieColumn" prefWidth="75.0" text="Category" />
+               </columns>
+            </TableView>
+            <HBox spacing="10.0">
+               <children>
+                  <Button fx:id="deleteButton" onAction="#deleteProduit" text="Delete" />
+                  <Button fx:id="refreshButton" text="Refresh" />
+                  <Button fx:id="ajouter" mnemonicParsing="false" onAction="#ajouterProduit" text="add" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button layoutX="320.0" layoutY="28.0" mnemonicParsing="false" onAction="#categorie" prefHeight="30.0" prefWidth="135.0" styleClass="my-button" text="Categorie" />
+   </children>
+</AnchorPane>
