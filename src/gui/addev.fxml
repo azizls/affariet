@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="865.0" prefWidth="1178.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddevController">
+   <left>
+      <AnchorPane prefHeight="866.0" prefWidth="305.0" style="-fx-background-color: #46ABD7;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutY="-8.0" prefHeight="866.0" prefWidth="311.0" styleClass="card3" stylesheets="@designDashbord.css">
+               <children>
+                  <ImageView fitHeight="154.0" fitWidth="235.0" layoutX="22.0" layoutY="23.0">
+                     <image>
+                        <Image url="@../../../../integration/affariet/src/image/1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="Image_user" fitHeight="67.0" fitWidth="71.0" layoutX="22.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="95.0" layoutY="271.0" mnemonicParsing="false" onAction="#user_back" prefHeight="49.0" prefWidth="151.0" styleClass="nav-btn" stylesheets="@designDashbord.css" text="Mon profil" />
+                  <Button layoutX="90.0" layoutY="370.0" mnemonicParsing="false" onAction="#produit_back" prefHeight="25.0" prefWidth="135.0" styleClass="nav-btn" text="Produit" />
+                  <Button layoutX="90.0" layoutY="425.0" mnemonicParsing="false" onAction="#commande_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Commande" />
+                  <Button layoutX="90.0" layoutY="475.0" mnemonicParsing="false" onAction="#evenement_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Evennement" />
+                  <Button layoutX="90.0" layoutY="525.0" mnemonicParsing="false" onAction="#blog_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Blog" />
+                  <Button layoutX="90.0" layoutY="575.0" mnemonicParsing="false" onAction="#reclamation_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Reclamation" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="866.0" prefWidth="878.0" stylesheets="@affarietstyleuser.css" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="im2" fitHeight="32.0" fitWidth="46.0" layoutX="188.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Bureau/image/téléchargement.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="272.0" layoutY="90.0" minHeight="-Infinity" minWidth="-Infinity" text="Nom de l'évenement " />
+            <TextField fx:id="txt_nom_event" layoutX="457.0" layoutY="90.0" opacity="0.4" />
+            <Label layoutX="272.0" layoutY="120.0" minHeight="-Infinity" minWidth="-Infinity" text="Emlacement " />
+            <TextField fx:id="txt_emp" layoutX="457.0" layoutY="120.0" opacity="0.4" />
+            <Label layoutX="272.0" layoutY="150.0" minHeight="-Infinity" minWidth="-Infinity" text="Prix " />
+            <TextField fx:id="txt_prix" layoutX="457.0" layoutY="150.0" opacity="0.4" />
+            <Label layoutX="272.0" layoutY="180.0" minHeight="-Infinity" minWidth="-Infinity" text="Déscription" />
+            <TextField fx:id="txt_des" layoutX="457.0" layoutY="180.0" opacity="0.4" />
+            <Label layoutX="176.0" layoutY="274.0" minHeight="-Infinity" minWidth="-Infinity" text="Début évenement" />
+            <Label layoutX="173.0" layoutY="348.0" minHeight="-Infinity" minWidth="-Infinity" text="Fin évenement" />
+            <Label layoutX="214.0" layoutY="433.0" minHeight="-Infinity" minWidth="-Infinity" text="Affiche" />
+            <DatePicker fx:id="date_debut" layoutX="361.0" layoutY="274.0" onAction="#date_debut" />
+            <DatePicker fx:id="date_fin" layoutX="358.0" layoutY="348.0" onAction="#date_fin" prefHeight="28.0" prefWidth="171.0" />
+            <Label fx:id="lbl_Ddebut" layoutX="361.0" layoutY="305.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Date debut :" />
+            <Label fx:id="lbl_Dfin" layoutX="358.0" layoutY="379.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Date fin :" />
+            <Button fx:id="button_im" layoutX="537.0" layoutY="429.0" mnemonicParsing="false" onAction="#browse" styleClass="my-button" text="Ajouter image" />
+            <TextField fx:id="ImageView" layoutX="338.0" layoutY="433.0" />
+            <Label layoutX="272.0" layoutY="210.0" minHeight="-Infinity" minWidth="-Infinity" text="Nombre de places" />
+            <TextField fx:id="txt_nbrMax" layoutX="457.0" layoutY="210.0" opacity="0.4" />
+            <Button fx:id="btn_ajouter_ev" layoutX="672.0" layoutY="309.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#sauvegarder" prefHeight="31.0" prefWidth="163.0" styleClass="my-button" stylesheets="@affarietstyleuser.css" text="Ajouter l'évenement" textAlignment="CENTER" textFill="#226bd1" />
+            <Button fx:id="btn_modifier_ev" layoutX="187.0" layoutY="520.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#modifier" prefHeight="40.0" prefWidth="178.0" styleClass="my-button" text="Afficher l'évenement" textAlignment="CENTER" textFill="#226bd1" />
+            <Button fx:id="btn_supprimer_ev" layoutX="452.0" layoutY="520.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#supprimer" prefHeight="37.0" prefWidth="195.0" styleClass="my-button" text="Supprimer l'évenement" textAlignment="CENTER" textFill="#226bd1" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

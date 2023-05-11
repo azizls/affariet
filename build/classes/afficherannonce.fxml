@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherannonceController">
+    <children>
+        <TableView fx:id="table_annonce" layoutX="20.0" layoutY="20.0" prefHeight="360.0" prefWidth="560.0">
+            <columns>
+                <TableColumn fx:id="texte_id_annonce" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="texte_type" prefWidth="100.0" text="Type" />
+                <TableColumn fx:id="texte_description" prefWidth="235.0" text="Description" />
+                <TableColumn fx:id="texte_id_user" prefWidth="150.0" text="Utilisateur" />
+                <TableColumn fx:id="texte_image" prefWidth="150.0" text="Image" />
+            </columns>
+        </TableView>
+        <Button fx:id="button_supprimer" layoutX="498.0" layoutY="380.0" mnemonicParsing="false" onAction="#delete" text="Supprimer" />
+    </children>
+</AnchorPane>

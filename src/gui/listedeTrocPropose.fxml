@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="847.0" prefWidth="1229.0" styleClass="my" stylesheets="@affarietstyleuser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ListedeTrocProposeController">
+   <children>
+      <Pane prefHeight="847.0" prefWidth="275.0" styleClass="card3" stylesheets="@designDashbord.css">
+         <children>
+            <ImageView fitHeight="154.0" fitWidth="235.0" layoutX="22.0" layoutY="23.0">
+               <image>
+                  <Image url="@../image/1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Image_user" fitHeight="67.0" fitWidth="71.0" layoutX="22.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="95.0" layoutY="271.0" mnemonicParsing="false" onAction="#user_back" prefHeight="49.0" prefWidth="151.0" styleClass="nav-btn" stylesheets="@designDashbord.css" text="Mon profil" />
+            <Button layoutX="90.0" layoutY="370.0" mnemonicParsing="false" onAction="#produit_back" prefHeight="25.0" prefWidth="135.0" styleClass="nav-btn" text="Produit" />
+            <Button layoutX="90.0" layoutY="425.0" mnemonicParsing="false" onAction="#commande_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Commande" />
+            <Button layoutX="90.0" layoutY="475.0" mnemonicParsing="false" onAction="#evenement_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Evennement" />
+            <Button layoutX="90.0" layoutY="525.0" mnemonicParsing="false" onAction="#blog_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Blog" />
+            <Button layoutX="90.0" layoutY="575.0" mnemonicParsing="false" onAction="#reclamation_back" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Reclamation" />
+       
+            <Label layoutX="1086.0" layoutY="30.0" text="Disconnect" />
+            <ImageView fitHeight="246.0" fitWidth="244.0" layoutX="15.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imageuser/1.png" />
+               </image>
+            </ImageView>
+              
+         </children>
+      </Pane>
+      <Label layoutX="1086.0" layoutY="30.0" text="Disconnect" />
+<Button fx:id="refreshTab" layoutX="1131.0" layoutY="242.0" mnemonicParsing="false" onAction="#refresh" text="refresh" />
+
+                  
+ <TableView fx:id="tabelauTroc" layoutX="287.0" layoutY="116.0" prefHeight="315.0" prefWidth="829.0">
+  <columns>
+    <TableColumn minWidth="0.0" prefWidth="0.0" />
+    <TableColumn fx:id="nomProduitfx" prefWidth="214.0" text="nom  produit a acheter" />
+      <TableColumn fx:id="descriptionfx" prefWidth="137.0" text="description" />
+      <TableColumn fx:id="produitAechangefx" prefWidth="160.0" text="produit a echange" />
+      <TableColumn fx:id="descriptionAechanger" prefWidth="144.0" text="description " />
+      <TableColumn fx:id="acheteurfx" prefWidth="238.0" text="nom acheteur" />
+  </columns>
+</TableView>
+<Button fx:id="deletefx" layoutX="1164.0" layoutY="186.0" mnemonicParsing="false" onAction="#delete" text="delete" />
+<TextField fx:id="chercherAcheteur" layoutX="435.0" layoutY="477.0" prefHeight="31.0" prefWidth="169.0" />
+<Label layoutX="321.0" layoutY="484.0" text="nom acheteur" />
+<Button fx:id="chercherParnom" layoutX="461.0" layoutY="542.0" mnemonicParsing="false" onAction="#chercherNom" text="recherche" />
+<Label layoutX="354.0" layoutY="36.0" text="nombre" />
+<Label fx:id="nombreTroc" layoutX="421.0" layoutY="37.0" prefHeight="19.0" prefWidth="35.0" />
+      
+                  
+        
+   </children>
+</AnchorPane>

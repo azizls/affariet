@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="847.0" prefWidth="1229.0" styleClass="my" stylesheets="@affarietstyleuser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MesCommande">
+   <children>
+      <Pane layoutY="-15.0" prefHeight="866.0" prefWidth="310.0" styleClass="card3" stylesheets="@designDashbord.css">
+         <children>
+            <ImageView fitHeight="154.0" fitWidth="235.0" layoutX="22.0" layoutY="23.0">
+               <image>
+                  <Image url="@../image/1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Image_user" fitHeight="67.0" fitWidth="71.0" layoutX="22.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="95.0" layoutY="271.0" mnemonicParsing="false" onAction="#monprofil" prefHeight="49.0" prefWidth="151.0" styleClass="nav-btn" stylesheets="@designDashbord.css" text="Mon profil" />
+            <Button layoutX="90.0" layoutY="370.0" mnemonicParsing="false" onAction="#produit" prefHeight="25.0" prefWidth="135.0" styleClass="nav-btn" text="Produit" />
+            <Button layoutX="90.0" layoutY="425.0" mnemonicParsing="false" onAction="#commande" prefHeight="34.0" prefWidth="181.0" styleClass="nav-btn" text="Mes commandes" />
+            <Button layoutX="90.0" layoutY="475.0" mnemonicParsing="false" onAction="#evenement" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Evennement" />
+            <Button layoutX="90.0" layoutY="525.0" mnemonicParsing="false" onAction="#blog" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Blog" />
+            <Button layoutX="90.0" layoutY="575.0" mnemonicParsing="false" onAction="#reclamation" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Reclamation" />
+       
+            <Label layoutX="1086.0" layoutY="30.0" text="Disconnect" />
+            <ImageView fitHeight="223.0" fitWidth="246.0" layoutX="38.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imageuser/1.png" />
+               </image>
+            </ImageView>
+              
+         </children>
+      </Pane>
+      <Label layoutX="1086.0" layoutY="30.0" text="Disconnect" />
+
+
+                  
+ <TableView fx:id="tableCommande" layoutX="383.0" layoutY="352.0" prefHeight="247.0" prefWidth="569.0">
+        <columns>
+          <TableColumn fx:id="produitfx" prefWidth="143.0" text="nom produit" />
+            <TableColumn fx:id="prixfx" prefWidth="129.0" text="Prix" />
+            <TableColumn fx:id="datefx" prefWidth="129.0" text="date" />
+        </columns>
+      </TableView>
+      <Label layoutX="413.0" layoutY="261.0" text="Nombre de Commande" />
+      <Label fx:id="nbCommande" layoutX="668.0" layoutY="261.0" />
+      <Label layoutX="413.0" layoutY="307.0" text="Totale de Consomation est " />
+      <Label fx:id="PrixTotale" layoutX="633.0" layoutY="306.0" />
+      
+                  
+        
+   </children>
+</AnchorPane>

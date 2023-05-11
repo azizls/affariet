@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="847.0" prefWidth="1229.0" styleClass="my" stylesheets="@affarietstyleuser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FrontmodifierController">
+   <children>
+      <Pane prefHeight="847.0" prefWidth="275.0" styleClass="card3" stylesheets="@designDashbord.css">
+         <children>
+            <ImageView fitHeight="154.0" fitWidth="235.0" layoutX="22.0" layoutY="23.0">
+               <image>
+                  <Image url="@../image/1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="Image_user" fitHeight="67.0" fitWidth="71.0" layoutX="22.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="95.0" layoutY="271.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="151.0" styleClass="nav-btn" stylesheets="@designDashbord.css" text="Mon profil" />
+            <Button layoutX="90.0" layoutY="329.0" mnemonicParsing="false" onAction="#produit" prefHeight="25.0" prefWidth="135.0" styleClass="nav-btn" text="Produit" />
+            <Button layoutX="90.0" layoutY="424.0" mnemonicParsing="false" onAction="#evenement" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Evennement" />
+            <Button layoutX="90.0" layoutY="483.0" mnemonicParsing="false" onAction="#blog" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Blog" />
+            <Button layoutX="90.0" layoutY="531.0" mnemonicParsing="false" onAction="#reclamation" prefHeight="33.0" prefWidth="135.0" styleClass="nav-btn" text="Reclamation" />
+      <ImageView fitHeight="27.0" fitWidth="41.0" layoutX="823.0" layoutY="10.0">
+         <image>
+            <Image url="@../image/disconnect.png" />
+         </image>
+      </ImageView>
+            <ImageView fitHeight="223.0" fitWidth="246.0" layoutX="14.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imageuser/1.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="103.0" layoutY="372.0" mnemonicParsing="false" onAction="#commande" prefHeight="34.0" prefWidth="166.0" styleClass="nav-btn" text="Mes commandes" />
+         </children>
+      </Pane>
+<TextField fx:id="text_nom" layoutX="471.0" layoutY="305.0" prefHeight="27.0" prefWidth="141.0" />
+<Label layoutX="372.0" layoutY="309.0" text="nom" />
+<TextField fx:id="text_age" layoutX="471.0" layoutY="378.0" prefHeight="27.0" prefWidth="141.0" />
+<TextField fx:id="text_mdp" layoutX="471.0" layoutY="446.0" />
+<Label layoutX="377.0" layoutY="382.0" prefHeight="17.0" prefWidth="29.0" text="age" />
+<Label layoutX="344.0" layoutY="452.0" text="mot de passe" />
+<TextField fx:id="text_prenom" layoutX="865.0" layoutY="300.0" />
+<TextField fx:id="text_adresse" layoutX="865.0" layoutY="374.0" />
+<Label layoutX="751.0" layoutY="304.0" text="prenom" />
+<Label layoutX="752.0" layoutY="380.0" text="adresse" />
+<TextField fx:id="text_num" layoutX="865.0" layoutY="444.0" />
+<Label layoutX="751.0" layoutY="450.0" text="numero" />
+<Button fx:id="btn_modifier" layoutX="528.0" layoutY="555.0" mnemonicParsing="false" onAction="#modifier" styleClass="my-button" text="modifier" />
+<ImageView fx:id="qrcodee" fitHeight="117.0" fitWidth="188.0" layoutX="733.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true" />
+<Button fx:id="changer_image" layoutX="619.0" layoutY="243.0" mnemonicParsing="false" onAction="#changer_img" styleClass="my-button" text="changer d'image" />
+<ImageView fx:id="imageview" fitHeight="173.0" fitWidth="264.0" layoutX="570.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
+<TextField fx:id="text_image" layoutX="577.0" layoutY="200.0" prefHeight="27.0" prefWidth="249.0" />
+   </children>
+</AnchorPane>

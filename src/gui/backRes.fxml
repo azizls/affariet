@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BackResController">
+    <TableView fx:id="tableView" layoutX="75.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" stylesheets="reservation.css">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="nomColumn" prefWidth="150.0" text="Nom">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nom" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="dateColumn" prefWidth="150.0" text="Date">
+                <cellValueFactory>
+                    <PropertyValueFactory property="date" />
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="clientColumn" prefWidth="224.0" text="Client">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nomUtilisateur" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+   <TextField fx:id="txt_recherche" layoutX="75.0" layoutY="69.0" onKeyPressed="#rechercher" />
+</AnchorPane>
